@@ -43,9 +43,9 @@ public class ProductResourceTests {
 	@Autowired
 	private ObjectMapper objectMapper;
 	
-	private long existingId;
-	private long noExistingId;
-	private long dependentId;
+	private Long existingId;
+	private Long noExistingId;
+	private Long dependentId;
 	private ProductDTO productDTO;
 	private PageImpl<ProductDTO> page;
 	
