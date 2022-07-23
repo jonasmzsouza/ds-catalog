@@ -37,6 +37,7 @@
 
 @media (min-width: 768px) {
   .main-nav {
+    max-height: 70px;
     padding-left: 40px;
   }
 
