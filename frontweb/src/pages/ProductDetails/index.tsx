@@ -1,19 +1,25 @@
 import './styles.css';
 import ProductPrice from 'components/ProductPrice';
 import { ReactComponent as ArrowIcon } from '../../assets/images/arrow.svg';
+import { Link } from 'react-router-dom';
 
 const ProductDetails = () => {
   return (
     <div className="product-details-container">
       <div className="base-card product-details-card">
-        <div className="goback-container">
-          <ArrowIcon />
-          <span>Voltar</span>
-        </div>
+        <Link to={'/products'}>
+          <div className="goback-container">
+            <ArrowIcon />
+            <span>Voltar</span>
+          </div>
+        </Link>
         <div className="row">
           <div className="col-xl-6">
             <div className="img-container">
-              <img src="https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/2-big.jpg" alt="Nome do produto" />
+              <img
+                src="https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/2-big.jpg"
+                alt="Nome do produto"
+              />
             </div>
             <div className="name-price-container">
               <h1>Nome do Produto</h1>
@@ -23,7 +29,10 @@ const ProductDetails = () => {
           <div className="col-xl-6">
             <div className="description-container">
               <h2>Descrição do produto</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, enim.</p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Laboriosam, enim.
+              </p>
             </div>
           </div>
         </div>
