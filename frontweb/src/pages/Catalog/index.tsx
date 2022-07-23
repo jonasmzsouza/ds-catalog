@@ -43,17 +43,19 @@ const Catalog = () => {
         </div>
       </div>
       <div className="row">
-        {isLoading 
-        ? <CardLoader />
-        : (page?.content.map((product) => {
-          return (
-            <div className="col-sm-6 col-lg-4 col-xl-3" key={product.id}>
-              <Link to={`/products/${product.id}`}>
-                <ProductCard product={product} />
-              </Link>
-            </div>
-          );
-        }))}
+        {isLoading ? (
+          <CardLoader />
+        ) : (
+          page?.content.map((product) => {
+            return (
+              <div className="col-sm-6 col-lg-4 col-xl-3" key={product.id}>
+                <Link to={`/products/${product.id}`}>
+                  <ProductCard product={product} />
+                </Link>
+              </div>
+            );
+          })
+        )}
       </div>
       <div className="row">
         <Pagination />
