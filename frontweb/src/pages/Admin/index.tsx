@@ -17,7 +17,7 @@ const Admin = () => {
           </Route>
           <Route path={'/admin/users'}>
             <h1>User CRUD</h1>
-          </Route>                    
+          </Route>
         </Switch>
       </div>
     </div>
