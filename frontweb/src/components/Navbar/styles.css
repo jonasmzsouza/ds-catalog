@@ -35,6 +35,14 @@
   font-weight: bold;
 }
 
+.main-loginout {
+  display: none;
+}
+
+.main-username {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .main-nav {
     max-height: 70px;
@@ -44,5 +52,22 @@
   .main-menu {
     width: 380px;
     padding: 0;
+  }
+
+  .main-loginout {
+    display: unset;
+    color: #FFF;
+    margin-right: 15px;
+  }
+}
+
+@media (min-width: 992px) {
+  .main-loginout {
+    margin-right: 40px;
+  }
+
+  .main-username {
+    display: unset;
+    margin-right: 20px;
   }
 }
