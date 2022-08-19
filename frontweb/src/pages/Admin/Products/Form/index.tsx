@@ -49,18 +49,12 @@ const Form = () => {
   }, [isEditing, productId, setValue]);
 
   const onSubmit = (formData: Product) => {
-    const data = {
-      ...formData,
-      imgUrl: isEditing
-        ? formData.imgUrl
-        : 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/1-big.jpg',
-      categories: isEditing ? formData.categories : [{ id: 1, name: '' }],
-    };
+    formData.imgUrl = formData.imgUrl.toLowerCase();
 
     const config: AxiosRequestConfig = {
       method: isEditing ? 'PUT' : 'POST',
       url: isEditing ? `/products/${productId}` : '/products',
-      data,
+      data: formData,
       withCredentials: true,
     };
 
@@ -105,9 +99,8 @@ const Form = () => {
                   <Select
                     {...field}
                     options={selectCategories}
-                    classNamePrefix={`${
-                      errors.categories ? 'is-invalid' : ''
-                    } product-form-select`}
+                    classNamePrefix="product-form-select"
+                    className={`${errors.categories ? 'is-invalid' : ''}`}
                     isMulti
                     getOptionLabel={(category: Category) => category.name}
                     getOptionValue={(category: Category) => String(category.id)}
@@ -135,6 +128,28 @@ const Form = () => {
               />
               <div className="invalid-feedback d-block">
                 {errors.price?.message}
+              </div>
+            </div>
+
+            <div className="product-form-input-container">
+              <input
+                {...register('imgUrl', {
+                  required: 'Campo obrigatório',
+                  pattern: {
+                    value:
+                      /^(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png|svg)/gi,
+                    message: 'Deve ser uma URL válida',
+                  },
+                })}
+                type="text"
+                name="imgUrl"
+                className={`form-control base-input ${
+                  errors.imgUrl ? 'is-invalid' : ''
+                }`}
+                placeholder="Url da imagem do produto"
+              />
+              <div className="invalid-feedback d-block">
+                {errors.imgUrl?.message}
               </div>
             </div>
           </div>
