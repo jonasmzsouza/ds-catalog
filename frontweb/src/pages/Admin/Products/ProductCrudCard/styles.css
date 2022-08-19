@@ -55,6 +55,7 @@
   }
 
   .product-crud-img-container {
+    width: 200px;
     border-bottom: none;
     border-right: 1px solid #e1e1e1;
   }
