@@ -2,6 +2,7 @@ import { AxiosRequestConfig } from 'axios';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory, useParams } from 'react-router-dom';
+import Select from 'react-select';
 import { Product } from 'types/product';
 import { requestBackend } from 'utils/requests';
 import './styles.css';
@@ -11,6 +12,12 @@ type UrlParams = {
 };
 
 const Form = () => {
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' },
+  ];
+
   const { productId } = useParams<UrlParams>();
 
   const isEditing = productId !== 'create';
@@ -83,6 +90,10 @@ const Form = () => {
               <div className="invalid-feedback d-block">
                 {errors.name?.message}
               </div>
+            </div>
+
+            <div className="product-form-input-container">
+              <Select options={options} classNamePrefix="product-form-select" isMulti />
             </div>
 
             <div className="product-form-input-container">

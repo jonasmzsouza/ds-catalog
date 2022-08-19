@@ -38,6 +38,23 @@
   border-radius: 10px;
 }
 
+.product-form-select__control {
+  background-color: #ffffff;
+  border-radius: 10px !important;
+  font-size: 1em;
+  letter-spacing: -0.015em;
+  color: #263238;
+  height: 50px;
+}
+
+.product-form-select__placeholder {
+  color: #9e9e9e !important;
+}
+
+.product-form-select__indicator-separator {
+  display: none;
+}
+
 @media (min-width: 576px) {
   .product-form-buttons-container {
     justify-content: flex-end;
