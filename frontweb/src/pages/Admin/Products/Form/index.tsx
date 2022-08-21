@@ -107,6 +107,7 @@ const Form = () => {
                     classNamePrefix="product-form-select"
                     className={`${errors.categories ? 'is-invalid' : ''}`}
                     isMulti
+                    placeholder="Categoria"
                     getOptionLabel={(category: Category) => category.name}
                     getOptionValue={(category: Category) => String(category.id)}
                   />
