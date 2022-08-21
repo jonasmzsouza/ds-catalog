@@ -8,23 +8,40 @@ import './styles.css';
 
 type ProductFilterData = {
   name: String;
-  category: Category;
+  category: Category | null;
 };
 
 const ProductFilter = () => {
   const [selectCategories, setSelectCategories] = useState<Category[]>([]);
 
-  const { register, handleSubmit, control } = useForm<ProductFilterData>();
+  const { register, handleSubmit, setValue, getValues, control } =
+    useForm<ProductFilterData>();
+
+  const onSubmit = (formData: ProductFilterData) => {
+    console.log('ENVIOU', formData);
+  };
+
+  const handleFormCLear = () => {
+    setValue('name', '');
+    setValue('category', null);
+  };
+
+  const handleChangeCategory = (value: Category) => {
+    setValue('category', value);
+
+    const obj: ProductFilterData = {
+      name: getValues('name'),
+      category: getValues('category'),
+    };
+
+    console.log('ENVIOU', obj);
+  };
 
   useEffect(() => {
     requestBackend({ url: '/categories' }).then((response) => {
       setSelectCategories(response.data.content);
     });
   }, []);
-
-  const onSubmit = (formData: ProductFilterData) => {
-    console.log('ENVIOU', formData);
-  };
 
   return (
     <div className="base-card product-filter-card">
@@ -53,13 +70,17 @@ const ProductFilter = () => {
                   isClearable
                   placeholder="Categoria"
                   classNamePrefix="product-form-select"
+                  onChange={(value) => handleChangeCategory(value as Category)}
                   getOptionLabel={(category: Category) => category.name}
                   getOptionValue={(category: Category) => String(category.id)}
                 />
               )}
             />
           </div>
-          <button className="btn btn-outline-secondary">
+          <button
+            onClick={handleFormCLear}
+            className="btn btn-outline-secondary"
+          >
             Limpar <span>Filtro</span>
           </button>
         </div>
