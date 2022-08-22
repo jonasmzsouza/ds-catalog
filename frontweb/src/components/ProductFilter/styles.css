@@ -33,12 +33,6 @@
   border-bottom: 1px solid #e1e1e1 !important;
 }
 
-.product-form-select__control {
-  border: none !important;
-  border-radius: 0 !important;
-  height: 30px;
-}
-
 .product-filter-bottom-container button {
   margin-left: 15px;
   border-radius: 10px;
@@ -50,6 +44,23 @@
 
 .product-filter-bottom-container button span {
   display: none;
+}
+
+.product-filter-select__control {
+  border: none !important;
+  height: 30px !important;
+}
+
+.product-filter-select__placeholder {
+  color: #9e9e9e !important;
+}
+
+.product-filter-select__indicator-separator {
+  display: none;
+}
+
+.product-filter-select__control--is-focused {
+  box-shadow: none !important;
 }
 
 @media (min-width: 576px) {

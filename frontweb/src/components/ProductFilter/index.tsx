@@ -73,7 +73,7 @@ const ProductFilter = ({ onSubmitFilter }: Props) => {
                   options={selectCategories}
                   isClearable
                   placeholder="Categoria"
-                  classNamePrefix="product-form-select"
+                  classNamePrefix="product-filter-select"
                   onChange={(value) => handleChangeCategory(value as Category)}
                   getOptionLabel={(category: Category) => category.name}
                   getOptionValue={(category: Category) => String(category.id)}
